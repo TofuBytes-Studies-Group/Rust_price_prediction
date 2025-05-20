@@ -25,3 +25,21 @@ Go to File -> Settings -> Build, Execution, Deploy -> Python Interpreter and the
 - Check if it works by running the code
 
 Everything should work after this.
+
+
+## Description
+
+We have two models that we trained: 
+- model.pkl and ordinal_encoder.pkl. 
+
+The model is our model we trained to predict the prices and the ordinal_encoder is used to convert categorical text labels into numerical values, to use for the prediction.
+
+<strong>model_predictor.py:</strong> This function loads a trained ML model and encoder, preprocesses input weapon stats (cleaning strings and ensuring consistent formatting), and predicts the weapon's price while maintaining the same feature structure used during training.
+
+<strong>ai_calls.py:</strong> This code uses an AI API to generate Skyrim-style weapon names and detailed stats (Damage, Weight, Upgrade, etc.) from a base name.
+
+<em>generate_weapon_name():</em> Creates a lore-friendly weapon name (e.g., "Jamie’s Vengeance") from a base (e.g., "Jamie").
+
+<em>generate_weapon():</em> Produces realistic stats (e.g., Damage: 25, Weight: 12, Type: Sword) for the generated name, parsed into a structured format.
+
+<strong>main.rs:</strong> This rust code generates a weapon based on the AI call, it then predicts the price, creates the final weapon and adds it to the database.
