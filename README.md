@@ -38,8 +38,8 @@ The model is our model we trained to predict the prices and the ordinal_encoder 
 
 ***ai_calls.py:*** This code uses an AI API to generate Skyrim-style weapon names and detailed stats (Damage, Weight, Upgrade, etc.) from a base name.
 
-*generate_weapon_name():* Creates a lore-friendly weapon name (e.g., "Jamie’s Vengeance") from a base (e.g., "Jamie").
+- *generate_weapon_name():* Creates a lore-friendly weapon name (e.g., "Jamie’s Vengeance") from a base (e.g., "Jamie").
 
-*generate_weapon():* Produces realistic stats (e.g., Damage: 25, Weight: 12, Type: Sword) for the generated name, parsed into a structured format.
+- *generate_weapon():* Produces realistic stats (e.g., Damage: 25, Weight: 12, Type: Sword) for the generated name, parsed into a structured format.
 
 ***main.rs:*** This rust code generates a weapon based on the AI call, it then predicts the price, creates the final weapon and adds it to the database.
