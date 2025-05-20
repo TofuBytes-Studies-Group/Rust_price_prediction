@@ -34,12 +34,12 @@ We have two models that we trained:
 
 The model is our model we trained to predict the prices and the ordinal_encoder is used to convert categorical text labels into numerical values, to use for the prediction.
 
-<strong>model_predictor.py:</strong> This function loads a trained ML model and encoder, preprocesses input weapon stats (cleaning strings and ensuring consistent formatting), and predicts the weapon's price while maintaining the same feature structure used during training.
+***model_predictor.py:*** This function loads a trained ML model and encoder, preprocesses input weapon stats (cleaning strings and ensuring consistent formatting), and predicts the weapon's price while maintaining the same feature structure used during training.
 
-<strong>ai_calls.py:</strong> This code uses an AI API to generate Skyrim-style weapon names and detailed stats (Damage, Weight, Upgrade, etc.) from a base name.
+***ai_calls.py:*** This code uses an AI API to generate Skyrim-style weapon names and detailed stats (Damage, Weight, Upgrade, etc.) from a base name.
 
-<em>generate_weapon_name():</em> Creates a lore-friendly weapon name (e.g., "Jamie’s Vengeance") from a base (e.g., "Jamie").
+*generate_weapon_name():* Creates a lore-friendly weapon name (e.g., "Jamie’s Vengeance") from a base (e.g., "Jamie").
 
-<em>generate_weapon():</em> Produces realistic stats (e.g., Damage: 25, Weight: 12, Type: Sword) for the generated name, parsed into a structured format.
+*generate_weapon():* Produces realistic stats (e.g., Damage: 25, Weight: 12, Type: Sword) for the generated name, parsed into a structured format.
 
-<strong>main.rs:</strong> This rust code generates a weapon based on the AI call, it then predicts the price, creates the final weapon and adds it to the database.
+***main.rs:*** This rust code generates a weapon based on the AI call, it then predicts the price, creates the final weapon and adds it to the database.
