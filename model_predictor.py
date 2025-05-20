@@ -4,14 +4,14 @@ import pandas as pd
 def predict_price(weapon_data: dict) -> float:
     """Predict weapon price from stats"""
     model = load("model.pkl")
-    encoder = load("ordinal_encoder.pkl")  # If you used preprocessing
+    encoder = load("ordinal_encoder.pkl")
 
     for key in weapon_data:
         if isinstance(weapon_data[key], str):
             weapon_data[key] = weapon_data[key].strip().rstrip('.')
 
 
-    # Create DataFrame with EXACT SAME COLUMNS as training data
+    # Creates DataFrame with EXACT SAME COLUMNS as training data
     df = pd.DataFrame([{
         'Damage': weapon_data['Damage'],
         'Weight': weapon_data['Weight'],
@@ -20,10 +20,9 @@ def predict_price(weapon_data: dict) -> float:
         'Type': weapon_data['Type'].rstrip('.') if isinstance(weapon_data['Type'], str) else weapon_data['Type']
     }])
 
-    # Ensure the DataFrame has the same columns as the model
+    # This ensures the DataFrame has the same columns as the model
     df = df.reindex(columns=model.feature_names_in_, fill_value=0)
 
-    # Apply same preprocessing as during training
     if 'ordinal_encoder.pkl' in globals():
         df_encoded = encoder.transform(df)
         return float(model.predict(df_encoded)[0])

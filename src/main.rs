@@ -61,7 +61,7 @@ fn main() -> PyResult<()> {
         let mut weapon = weapon;
         weapon.predicted_price = Some(predicted);
 
-        println!("✅ Final Weapon: {:?}", weapon);
+        println!("Final Weapon: {:?}", weapon);
 
         let rt = tokio::runtime::Runtime::new()
             .map_err(|e| PyErr::new::<pyo3::exceptions::PyRuntimeError, _>(e.to_string()))?;
@@ -76,7 +76,7 @@ fn main() -> PyResult<()> {
 
             coll.insert_one(weapon, None).await
                 .map_err(|e| PyErr::new::<pyo3::exceptions::PyIOError, _>(e.to_string()))?;
-            println!("✅ Inserted into MongoDB!");
+            println!("Inserted into MongoDB!");
             Ok(())
         })
     })

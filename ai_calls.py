@@ -4,7 +4,6 @@ import re
 API_URL = "http://localhost:11434/api/generate"
 MODEL = "hf.co/DavidAU/Gemma-The-Writer-Mighty-Sword-9B-GGUF:Q2_K"
 
-# ⭐ Function to generate a full weapon name from a base name
 def generate_weapon_name(base_name):
     prompt = f"""
         Create a Skyrim-style weapon name using the base '{base_name}'.
@@ -25,7 +24,7 @@ def generate_weapon_name(base_name):
         name_text = response.json().get("response", "").strip()
         return name_text
     except Exception as e:
-        print(f"❌ Error generating weapon name: {e}")
+        print(f"Error generating weapon name: {e}")
         return f"{base_name}'s Weapon"
 
 # Function to generate the full weapon stats
@@ -54,29 +53,28 @@ def generate_weapon(full_name):
         print("Generated text from AI:", generated_text)
 
         weapon_details = parse_generated_text(generated_text)
-        weapon_details["Name"] = full_name  # ⭐ Add the generated name
+        weapon_details["Name"] = full_name
         return weapon_details
     except requests.exceptions.RequestException as e:
-        print(f"❌ Error connecting to AI API: {e}")
+        print(f"Error connecting to AI API: {e}")
         return {}
 
 
-# Function to parse the generated text
 def parse_generated_text(text):
 
     weapon_data = {}
-    pattern = r"([A-Za-z]+):\s*([^,]+)"  # Match the pattern "Attribute: Value"
+    pattern = r"([A-Za-z]+):\s*([^,]+)"
 
     lines = text.strip().splitlines()
     for line in lines:
-        matches = re.findall(pattern, line)  # Find all matches for the pattern
+        matches = re.findall(pattern, line)
         for key, value in matches:
             if key == "Damage":
-                weapon_data[key] = int(value)  # Convert Damage to int
+                weapon_data[key] = int(value)
             elif key == "Weight":
-                weapon_data[key] = int(value)  # Convert Weight to float
+                weapon_data[key] = int(value)
             else:
-                weapon_data[key] = value.strip()  # Keep the rest as string (e.g., Upgrade, Perk, etc.)
+                weapon_data[key] = value.strip()
 
     print("PARSED FIELDS:", weapon_data)
 
@@ -84,8 +82,8 @@ def parse_generated_text(text):
     missing = [f for f in required_fields if f not in weapon_data]
 
     if missing:
-        print(f"❌ Not all required fields found. Missing: {missing}")
+        print(f"Not all required fields found. Missing: {missing}")
         return {}
 
-    print("✅ Parsed weapon:", weapon_data)
+    print("Parsed weapon:", weapon_data)
     return weapon_data
