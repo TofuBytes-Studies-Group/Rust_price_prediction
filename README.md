@@ -3,7 +3,7 @@
 ### 1. Ollama
 
 Download ollama and make sure to have downloaded the AI.
-- ollama pull DavidAU/Gemma-The-Writer-Mighty-Sword-9B-GGUF
+- ollama pull hf.co/DavidAU/Gemma-The-Writer-Mighty-Sword-9B-GGUF:Q2_K
 
 Check if it is downloaded:
 - ollama list
