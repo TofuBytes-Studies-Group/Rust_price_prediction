@@ -1,6 +1,6 @@
 # Skyrin weapon generator and price prediction
 
-## This is part 2 of the ML and AI exam.
+### This is part 2 of the ML and AI exam.
 
 This project generates lore-friendly Skyrim-style weapons using a locally hosted AI model, predicts their prices using a trained machine learning model, 
 and stores the final result in a MongoDB database. It combines Rust for orchestration and backend logic, Python for model inference and AI communication, 
