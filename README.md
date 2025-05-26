@@ -1,4 +1,4 @@
-# Skyrin weapon generator and price prediction
+# Skyrim weapon generator and price prediction
 
 ### This is part 2 of the ML and AI exam.
 
