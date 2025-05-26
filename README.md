@@ -1,3 +1,16 @@
+# Skyrin weapon generator and price prediction
+
+This project generates lore-friendly Skyrim-style weapons using a locally hosted AI model, predicts their prices using a trained machine learning model, 
+and stores the final result in a MongoDB database. It combines Rust for orchestration and backend logic, Python for model inference and AI communication, 
+and Ollama for local AI generation.
+
+- We are using the jupyter notebook to clean the dataset and learn the models how to predict the prices
+- After that, we use the codebase to give a name for the weapon in the terminal, and the AI then responds with a full name, damage, weight, upgrade, perk and type.
+- Lastly, we take the AI generated answer, and put it into a MongoDB Database.´
+
+We are connecting to the local AI using the API url http://localhost:11434/api/generate
+
+
 ## Setup
 
 ### 1. Ollama
